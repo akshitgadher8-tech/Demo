@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Jeevan Demo - Client Review</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+        
+        header p {
+            color: #7f8c8d;
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+        }
+
+        /* Presentation Container */
+        .presentation-area {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .slider {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        /* Hide all slides by default */
+        .slide {
+            display: none; 
+        }
+
+        /* Show active slide with a smooth fade */
+        .slide.active {
+            display: block; 
+            animation: fadein 0.6s ease-in-out;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0.6; transform: scale(0.99); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slide-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            background-color: #fff;
+        }
+
+        .slide-footer h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #34495e;
+        }
+
+        .slide-footer p {
+            margin: 5px 0 0;
+            color: #7f8c8d;
+            font-weight: bold;
+        }
+
+        /* Next & Previous Navigation Arrows */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            padding: 20px 25px;
+            margin-top: -30px;
+            color: white;
+            font-weight: bold;
+            font-size: 28px;
+            transition: 0.3s ease;
+            border-radius: 0 8px 8px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            border: none;
+            text-decoration: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            color: #95a5a6;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>E-Jeevan App Interface</h1>
+        <p>Interactive Client Demo Presentation</p>
+    </header>
+
+    <div class="presentation-area">
+        <div class="slider">
+            
+            <div class="slide active">
+                <img src="images/screen1.png" alt="Get Started">
+                <div class="slide-footer">
+                    <h3>Get Started / Home Screen</h3>
+                    <p>1 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen2.png" alt="Language Selection">
+                <div class="slide-footer">
+                    <h3>Language Selection</h3>
+                    <p>2 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen3.png" alt="Welcome Registration">
+                <div class="slide-footer">
+                    <h3>Welcome & Registration Profile</h3>
+                    <p>3 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen4.png" alt="OTP Verification">
+                <div class="slide-footer">
+                    <h3>Number Verification (OTP)</h3>
+                    <p>4 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen5.png" alt="Permissions">
+                <div class="slide-footer">
+                    <h3>Camera & Location Permissions</h3>
+                    <p>5 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen6.png" alt="Main Dashboard">
+                <div class="slide-footer">
+                    <h3>Main User Dashboard</h3>
+                    <p>6 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen7.png" alt="App Screen 7">
+                <div class="slide-footer">
+                    <h3>App Interface Continued</h3>
+                    <p>7 / 8</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="images/screen8.png" alt="App Screen 8">
+                <div class="slide-footer">
+                    <h3>App Interface Continued</h3>
+                    <p>8 / 8</p>
+                </div>
+            </div>
+
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+
+        </div>
+    </div>
+
+    <footer>
+        Confidential Demo provided for review purposes. &copy; 2026.
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove("active"));
+            
+            // If we go past the last image, loop back to the first one
+            if (index >= slides.length) { slideIndex = 0; }
+            
+            // If we go backwards past the first image, jump to the last one
+            if (index < 0) { slideIndex = slides.length - 1; }
+            
+            // Show the current slide
+            slides[slideIndex].classList.add("active");
+        }
+
+        function changeSlide(direction) {
+            slideIndex += direction;
+            showSlide(slideIndex);
+        }
+    </script>
+</body>
+</html>
